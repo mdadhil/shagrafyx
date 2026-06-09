@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ShaGrafyx — Gifts & Promotional Items, Doha Qatar</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#FFD700;--gold-dark:#b8960c;--gold-muted:#9a7d0a;--black:#111;--gray-light:#f5f5f3;--gray-border:#e0ddd6;--text:#1a1a1a}
+body{font-family:'DM Sans',sans-serif;background:var(--gray-light);color:var(--text);line-height:1.6}
+
+.hero{background:var(--black);padding:56px 2rem 0;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(255,215,0,.08) 0%,transparent 70%);pointer-events:none}
+.logo-box{width:84px;height:84px;background:var(--gold);border-radius:16px;display:inline-flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:46px;color:var(--black);margin-bottom:18px;box-shadow:0 0 40px rgba(255,215,0,.2)}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,8vw,76px);color:var(--gold);letter-spacing:6px;line-height:1;margin-bottom:6px}
+.hero .arabic{font-size:17px;color:rgba(255,215,0,.45);margin-bottom:8px;letter-spacing:2px}
+.hero .tagline{font-size:11px;color:var(--gold-muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:30px}
+.strip{background:var(--gold);color:var(--black);font-size:12px;font-weight:500;padding:11px 2rem;letter-spacing:1px;text-align:center}
+
+.container{max-width:960px;margin:0 auto;padding:0 1.5rem}
+.section{padding:2.5rem 0}
+.section-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:6px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:2px;margin-bottom:1.25rem}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.stat-card{background:var(--gold);border-radius:13px;padding:1.1rem;text-align:center}
+.stat-card .num{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--black);line-height:1}
+.stat-card .lbl{font-size:11px;color:#7a6000;margin-top:3px;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px}
+.product-card{background:#fff;border:1px solid var(--gray-border);border-radius:12px;padding:1.1rem .8rem;text-align:center;transition:border-color .2s,transform .2s}
+.product-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.product-card .icon{font-size:26px;margin-bottom:7px}
+.product-card .name{font-size:12px;font-weight:500}
+
+.cat-section{margin-bottom:2rem}
+.cat-label{font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);border-left:3px solid var(--gold);padding-left:10px;margin-bottom:12px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.gallery-item{background:#fff;border-radius:13px;overflow:hidden;border:1px solid var(--gray-border);transition:transform .2s,box-shadow .2s}
+.gallery-item:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1)}
+.gallery-item img{width:100%;height:260px;object-fit:cover;display:block}
+.gallery-caption{padding:11px 13px;border-top:1px solid var(--gray-border)}
+.gallery-caption .title{font-size:13px;font-weight:500}
+.gallery-caption .sub{font-size:11px;color:var(--gold-dark);margin-top:2px}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:11px}
+.why-card{background:var(--black);border-radius:12px;padding:1.1rem;text-align:center}
+.why-card .icon{font-size:24px;margin-bottom:9px}
+.why-card .wt{font-size:13px;font-weight:500;color:var(--gold)}
+.why-card .ws{font-size:11px;color:var(--gold-muted);margin-top:3px}
+
+.contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:580px){.contact-wrapper{grid-template-columns:1fr}}
+.contact-card{background:#fff;border:1px solid var(--gray-border);border-radius:15px;padding:1.4rem}
+.person-row{display:flex;align-items:center;gap:13px;margin-bottom:1.1rem}
+.avatar{width:50px;height:50px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--gold);flex-shrink:0}
+.contact-row{display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid var(--gray-border);font-size:14px}
+.contact-row:last-child{border-bottom:none}
+.contact-row a{color:var(--gold-dark);text-decoration:none}
+.map-box{background:var(--black);border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;color:var(--gold);min-height:200px;border:1px solid #2a2a2a;padding:2rem;text-align:center}
+.map-box .big{font-size:34px}
+.map-box .loc{font-weight:500;font-size:15px}
+.map-box .sub{font-size:12px;color:var(--gold-muted)}
+
+.cta-section{background:var(--black);padding:3rem 2rem;text-align:center}
+.cta-section h2{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;color:var(--gold);margin-bottom:7px}
+.cta-section p{font-size:13px;color:var(--gold-muted);margin-bottom:18px}
+.cta-btns{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
+.cta-btn{background:var(--gold);color:var(--black);border:none;border-radius:10px;padding:11px 20px;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:7px;text-decoration:none;transition:opacity .2s}
+.cta-btn:hover{opacity:.85}
+
+footer{background:#0a0a0a;color:var(--gold-muted);text-align:center;font-size:12px;padding:1.4rem;letter-spacing:.5px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo-box">S</div>
+  <h1>ShaGrafyx</h1>
+  <div class="arabic">شاغرافيكس للهدايا</div>
+  <div class="tagline">Gifts &amp; Promotional Items · Doha, Qatar</div>
+</div>
+<div class="strip">T-shirt &nbsp;·&nbsp; Mug &nbsp;·&nbsp; Cap &nbsp;·&nbsp; Promotional Gifts &nbsp;·&nbsp; Sublimation &nbsp;·&nbsp; DTF &nbsp;·&nbsp; All Kinds of Printing</div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="stats">
+      <div class="stat-card"><div class="num">17+</div><div class="lbl">Products</div></div>
+      <div class="stat-card"><div class="num">5</div><div class="lbl">Categories</div></div>
+      <div class="stat-card"><div class="num">100%</div><div class="lbl">Custom</div></div>
+      <div class="stat-card"><div class="num">QAT</div><div class="lbl">Doha Based</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Services</div>
+    <div class="section-title">What We Offer</div>
+    <div class="products-grid">
+      <div class="product-card"><div class="icon">👕</div><div class="name">T-shirts</div></div>
+      <div class="product-card"><div class="icon">☕</div><div class="name">Mugs</div></div>
+      <div class="product-card"><div class="icon">🧢</div><div class="name">Caps</div></div>
+      <div class="product-card"><div class="icon">🎁</div><div class="name">Promo Gifts</div></div>
+      <div class="product-card"><div class="icon">🖨️</div><div class="name">Sublimation</div></div>
+      <div class="product-card"><div class="icon">🎨</div><div class="name">DTF Printing</div></div>
+      <div class="product-card"><div class="icon">👜</div><div class="name">Bags</div></div>
+      <div class="product-card"><div class="icon">🔑</div><div class="name">Keychains</div></div>
+      <div class="product-card"><div class="icon">✨</div><div class="name">All Printing</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Portfolio</div>
+    <div class="section-title">Our Work</div>
+
+    <div class="cat-section">
+      <div class="cat-label">T-shirts &amp; Hoodies</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="tshirt1.jpg" alt="Custom Newspaper Print" loading="lazy"/><div class="gallery-caption"><div class="title">Custom Newspaper Print</div><div class="sub">DTF / Sublimation · White T-shirt</div></div></div>
+        <div class="gallery-item"><img src="tshirt2.jpg" alt="Team Sports Jersey" loading="lazy"/><div class="gallery-caption"><div class="title">Team Sports Jersey</div><div class="sub">Full Sublimation · Custom Name &amp; Number</div></div></div>
+        <div class="gallery-item"><img src="img1.jpg" alt="Ctrl+C Ctrl+V Baby Set" loading="lazy"/><div class="gallery-caption"><div class="title">Ctrl+C / Ctrl+V Baby Set</div><div class="sub">DTF Print · Parent &amp; Baby Matching</div></div></div>
+        <div class="gallery-item"><img src="img4.jpg" alt="Baby Bodysuit Daddy" loading="lazy"/><div class="gallery-caption"><div class="title">Baby Bodysuit — Daddy</div><div class="sub">DTF Print · Custom Baby Onesie</div></div></div>
+        <div class="gallery-item"><img src="img8.jpg" alt="Mr and Mrs Potato Hoodie" loading="lazy"/><div class="gallery-caption"><div class="title">Mr &amp; Mrs Potato Hoodie</div><div class="sub">DTF Print · Couples Custom Design</div></div></div>
+        <div class="gallery-item"><img src="img10.jpg" alt="Education Above All Hoodie" loading="lazy"/><div class="gallery-caption"><div class="title">Education Above All Hoodie</div><div class="sub">DTF Print · Corporate Branded Wear</div></div></div>
+        <div class="gallery-item"><img src="img11.jpg" alt="Abstract Art Hoodie" loading="lazy"/><div class="gallery-caption"><div class="title">Abstract Art Hoodie</div><div class="sub">DTF Print · Oversized Custom Design</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-label">Caps</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="img7.jpg" alt="Al Zaweya Branded Caps" loading="lazy"/><div class="gallery-caption"><div class="title">Al Zaweya Branded Caps</div><div class="sub">DTF Print · Bulk Corporate Order</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-label">Mugs</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="img5.jpg" alt="Personalised Name Mugs" loading="lazy"/><div class="gallery-caption"><div class="title">Personalised Name Mugs</div><div class="sub">Sublimation · Custom Calligraphy</div></div></div>
+        <div class="gallery-item"><img src="img6.jpg" alt="Birthday Photo Mug" loading="lazy"/><div class="gallery-caption"><div class="title">Birthday Photo Mug</div><div class="sub">Sublimation · Custom Photo &amp; Text</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-label">Gifts &amp; Accessories</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="img2.jpg" alt="Custom Photo Keychains" loading="lazy"/><div class="gallery-caption"><div class="title">Custom Photo Keychains</div><div class="sub">Sublimation · Personalised Gifts</div></div></div>
+        <div class="gallery-item"><img src="img3.jpg" alt="Photo Mobile Stand" loading="lazy"/><div class="gallery-caption"><div class="title">Photo Mobile Stand</div><div class="sub">Sublimation · Custom Photo Gift</div></div></div>
+        <div class="gallery-item"><img src="img12.jpg" alt="Retaal Qatar Safety Vest" loading="lazy"/><div class="gallery-caption"><div class="title">Retaal Qatar Safety Vest</div><div class="sub">Heat Press · Corporate Logo Branding</div></div></div>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-label">Bags</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="img9.jpg" alt="Al Masoodi Corporate Bags" loading="lazy"/><div class="gallery-caption"><div class="title">Al Masoodi Corporate Bags</div><div class="sub">Sublimation · Law Firm Branded Tote</div></div></div>
+        <div class="gallery-item"><img src="img13.jpg" alt="Happy Birthday Jute Bags" loading="lazy"/><div class="gallery-caption"><div class="title">Happy Birthday Jute Bags</div><div class="sub">Sublimation · Event Gift Bags</div></div></div>
+        <div class="gallery-item"><img src="img14.jpg" alt="Custom Arabic Pouch" loading="lazy"/><div class="gallery-caption"><div class="title">Custom Arabic Pouch</div><div class="sub">Sublimation Sticker · Personalised Bag</div></div></div>
+        <div class="gallery-item"><img src="img15.jpg" alt="Soar High Branded Jute Bags" loading="lazy"/><div class="gallery-caption"><div class="title">Soar High Branded Jute Bags</div><div class="sub">Sublimation · Bulk Brand Gifting</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Why Us</div>
+    <div class="section-title">Our Promise</div>
+    <div class="why-grid">
+      <div class="why-card"><div class="icon">✅</div><div class="wt">Premium Quality</div><div class="ws">Durable, vibrant prints</div></div>
+      <div class="why-card"><div class="icon">⚡</div><div class="wt">Fast Turnaround</div><div class="ws">On-time delivery</div></div>
+      <div class="why-card"><div class="icon">🎨</div><div class="wt">Custom Designs</div><div class="ws">Your brand, your vision</div></div>
+      <div class="why-card"><div class="icon">📦</div><div class="wt">Corporate Orders</div><div class="ws">Bulk &amp; branded gifting</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Get in Touch</div>
+    <div class="section-title">Contact Us</div>
+    <div class="contact-wrapper">
+      <div class="contact-card">
+        <div class="person-row">
+          <div class="avatar">MA</div>
+          <div>
+            <div style="font-weight:500;font-size:15px;">Mohamed Adhil</div>
+            <div style="font-size:13px;color:#888;">Business Development Executive</div>
+          </div>
+        </div>
+        <div class="contact-row"><span style="color:var(--gold-dark)">📞</span><span>+974 7111 4259</span></div>
+        <div class="contact-row"><span style="color:var(--gold-dark)">📱</span><span>+974 7772 2386</span></div>
+        <div class="contact-row"><span style="color:var(--gold-dark)">✉️</span><a href="mailto:shagrafyxgifts@gmail.com">shagrafyxgifts@gmail.com</a></div>
+        <div class="contact-row"><span style="color:var(--gold-dark)">📸</span><a href="https://instagram.com/ShaGrafyx" target="_blank">@ShaGrafyx</a></div>
+        <div class="contact-row"><span style="color:var(--gold-dark)">📍</span><span>Doha, Qatar</span></div>
+      </div>
+      <div class="map-box">
+        <div class="big">📍</div>
+        <div class="loc">Doha, Qatar</div>
+        <div class="sub">Available for orders across Qatar.<br/>Delivery &amp; pickup available.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Let's Print Something Great</h2>
+  <p>Ready to put your brand on everything? Reach out today.</p>
+  <div class="cta-btns">
+    <a class="cta-btn" href="tel:+97471114259">📞 Call Now</a>
+    <a class="cta-btn" href="mailto:shagrafyxgifts@gmail.com">✉️ Email Us</a>
+    <a class="cta-btn" href="https://instagram.com/ShaGrafyx" target="_blank">📸 Instagram</a>
+    <a class="cta-btn" href="https://wa.me/97471114259" target="_blank">💬 WhatsApp</a>
+  </div>
+</div>
+
+<footer>© 2026 ShaGrafyx · Gifts &amp; Promotional Items · Doha, Qatar &nbsp;·&nbsp; @ShaGrafyx</footer>
+
+</body>
+</html>
