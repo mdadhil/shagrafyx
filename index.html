@@ -30,8 +30,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-light);color:var(--t
 .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,8vw,76px);color:var(--gold);letter-spacing:6px;line-height:1;margin-bottom:6px;opacity:0;animation:fadeDown .8s ease .2s forwards}
 .hero .arabic{font-size:17px;color:rgba(255,215,0,.45);margin-bottom:8px;letter-spacing:2px;opacity:0;animation:fadeDown .8s ease .4s forwards}
 .hero .tagline{font-size:11px;color:var(--gold-muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeDown .8s ease .5s forwards}
-.typing-wrap{min-height:22px;margin-bottom:30px}
-.typing{font-size:13px;color:var(--gold);letter-spacing:2px;border-right:2px solid var(--gold);padding-right:4px;white-space:nowrap;overflow:hidden;display:inline-block}
+.typing-wrap{min-height:28px;margin-bottom:30px;overflow:hidden}
+.word-flip{font-size:13px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:500;display:inline-block;animation:none}
 .strip{background:var(--gold);color:var(--black);font-size:12px;font-weight:500;padding:11px 2rem;letter-spacing:1px;text-align:center}
 
 @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
@@ -39,8 +39,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-light);color:var(--t
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 /* SCROLL ANIMATIONS */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{opacity:0;transform:scale(.98);transition:opacity .3s ease,transform .3s ease}
+.reveal.visible{opacity:1;transform:scale(1)}
 
 .container{max-width:960px;margin:0 auto;padding:0 1.5rem}
 .section{padding:2.5rem 0}
@@ -140,7 +140,7 @@ footer{background:#0a0a0a;color:var(--gold-muted);text-align:center;font-size:12
   <h1>ShaGrafyx</h1>
   <div class="arabic">شاغرافيكس للهدايا</div>
   <div class="tagline">Gifts &amp; Promotional Items · Doha, Qatar</div>
-  <div class="typing-wrap"><span class="typing" id="typing"></span></div>
+  <div class="typing-wrap"><span class="word-flip" id="wordflip"></span></div>
 </div>
 <div class="strip">T-shirt &nbsp;·&nbsp; Mug &nbsp;·&nbsp; Cap &nbsp;·&nbsp; Promotional Gifts &nbsp;·&nbsp; Sublimation &nbsp;·&nbsp; DTF &nbsp;·&nbsp; All Kinds of Printing</div>
 
@@ -294,24 +294,38 @@ for (let i = 0; i < 28; i++) {
   container.appendChild(p);
 }
 
-// TYPING EFFECT
-const phrases = ['Custom T-shirts & Hoodies', 'Branded Mugs & Caps', 'Corporate Gifts & Bags', 'DTF & Sublimation Printing', 'Any Idea — We Print It!'];
-let pi = 0, ci = 0, deleting = false;
-const el = document.getElementById('typing');
-function type() {
-  const word = phrases[pi];
-  el.textContent = deleting ? word.substring(0, ci--) : word.substring(0, ci++);
-  if (!deleting && ci === word.length + 1) { deleting = true; setTimeout(type, 1400); return; }
-  if (deleting && ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-  setTimeout(type, deleting ? 55 : 90);
+// 3D FLIP WORD EFFECT
+const phrases = ['✦ Custom T-shirts & Hoodies', '✦ Branded Mugs & Caps', '✦ Corporate Gifts & Bags', '✦ DTF & Sublimation Printing', '✦ Any Idea — We Print It!'];
+let pi = 0;
+const el = document.getElementById('wordflip');
+el.style.perspective = '400px';
+el.style.display = 'inline-block';
+function flipNext() {
+  el.style.transition = 'opacity .25s ease, transform .35s ease';
+  el.style.opacity = '0';
+  el.style.transform = 'rotateX(90deg) translateY(-12px)';
+  setTimeout(() => {
+    pi = (pi + 1) % phrases.length;
+    el.textContent = phrases[pi];
+    el.style.transition = 'none';
+    el.style.transform = 'rotateX(-90deg) translateY(12px)';
+    el.style.opacity = '0';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      el.style.transition = 'opacity .35s ease, transform .4s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'rotateX(0deg) translateY(0)';
+    }));
+  }, 300);
 }
-setTimeout(type, 2200);
+el.textContent = phrases[0];
+el.style.opacity = '1';
+setInterval(flipNext, 2400);
 
 // SCROLL REVEAL
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.12 });
+}, { threshold: 0, rootMargin: '0px 0px -10px 0px' });
 reveals.forEach(r => observer.observe(r));
 
 // LIGHTBOX
